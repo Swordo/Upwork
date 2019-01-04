@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+
+import Nav from './component/Nav'
+import SideBar from "./component/SideBar"
+import Route1 from "./component/RightSide"
+import Route2 from "./component/Route2"
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div>
+          <Nav />
+          <div className="container">
+            <div className="row">
+              <SideBar></SideBar>
+              <Route exact path="/" component={Route1} />
+              <Route exact path="/route2" component={Route2} />
+            </div>
+          </div>
+
+        </div>
+      </BrowserRouter>
     );
   }
 }
